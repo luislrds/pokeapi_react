@@ -15,8 +15,7 @@ import Name from "../components/Element";
 import Characteristic from "../components/Characteristic";
 import Color from "../components/Color";
 import Habitat from "../components/Habitat";
-
-const API = 'https://pokeapi.co/api/v2/'
+import { APIName } from '../helpers/endpoint'
 
 const Pokemons = () => {
 
@@ -54,7 +53,7 @@ const Pokemons = () => {
 
     const consultarApi = async (offset:number= 0, limit:number=10)=>{ 
         setLoading(true)
-        await axios.get(`${API}pokemon?limit=${limit}&offset=${offset}`)
+        await axios.get(APIName()+`?limit=${limit}&offset=${offset}`)
         .then((res:any) => {
             setTotalResults(res.data.count)
             const arrayElement =  res.data.results.map((result:any)=>{  
@@ -78,18 +77,18 @@ const Pokemons = () => {
     <div> 
      <TableContainer component={Paper}>
             <Table aria-label="table"  >
-                <TableHead className="bg-blue-800">
+                <TableHead className="bg-blue-900">
                 <TableRow >
                     <TableCell align='center'>
-                        <p className='text-white text-2xl text-transform: uppercase'>Nombre</p>
+                        <p className='text-white text-1xl text-transform: uppercase'>Nombre</p>
                     </TableCell>
                     <TableCell align='center'>
-                        <p className='text-white text-2xl text-transform: uppercase'>Características</p></TableCell>
+                        <p className='text-white text-1xl text-transform: uppercase'>Características</p></TableCell>
                     <TableCell align='center'>
-                        <p className='text-white text-2xl text-transform: uppercase'>Color</p>
+                        <p className='text-white text-1xl text-transform: uppercase'>Color</p>
                     </TableCell>
                     <TableCell align='center'>
-                        <p className='text-white text-2xl text-transform: uppercase'>Habitat</p></TableCell>
+                        <p className='text-white text-1xl text-transform: uppercase'>Habitat</p></TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
@@ -108,7 +107,7 @@ const Pokemons = () => {
                             sx={{
                                 '&.MuiTableRow-hover': {
                                   '&:hover': {
-                                    backgroundColor: '#7992E8',
+                                    backgroundColor: '#B1B4C2',
                                   },
                                 },
                               }}>

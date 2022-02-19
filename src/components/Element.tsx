@@ -1,7 +1,7 @@
+import { Divider } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-
-const API = 'https://pokeapi.co/api/v2/'
+import { APIName } from '../helpers/endpoint'
 
 const Element = (props:any) => {
     const [element, setElement ] = useState({
@@ -13,7 +13,7 @@ const Element = (props:any) => {
         consultarApi()
     },[])
     const consultarApi = async ()=>{ 
-        await axios.get(API + 'pokemon/'+props.id).then(f => {
+        await axios.get(APIName()+props.id).then(f => {
             const object :any = {
                id:f.data.id,
                name : f.data.name,
@@ -27,9 +27,11 @@ const Element = (props:any) => {
 
   return (
     <>
-        <p className='text-transform: uppercase font-black text-4xl'>
-            {element.name}
-        </p>
+        <div className="border-b-4 border-b-red-500">
+            <p className='text-transform: uppercase font-black text-4xl py-4'>
+                {element.name}
+            </p>
+        </div>
         
         <img className='pt-10 mx-auto' src={element.image} alt="{element.name}" />
     </>

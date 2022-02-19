@@ -15,8 +15,6 @@ const PokemonsDetail = () => {
  
   const { id } = useParams();
 
-  console.log(id)
-
   return (
     <>  
         <div className='pt-2 pb-10'>

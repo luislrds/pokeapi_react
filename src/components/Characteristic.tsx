@@ -1,7 +1,6 @@
-import { TableCell } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react'
-const API = 'https://pokeapi.co/api/v2/'
+import { APICharacteristic } from '../helpers/endpoint'
 
 const Characteristic = (props:any) => {
     const [element, setElement ] = useState({
@@ -12,7 +11,7 @@ const Characteristic = (props:any) => {
     },[])
 
     const consultarApi = async ()=>{ 
-        await axios.get(API + 'characteristic/'+props.id).then(f => {
+        await axios.get(APICharacteristic()+props.id).then(f => {
             const object :any = {
                 characteristic:f.data.descriptions.map((e: any) => {
                     return e.description;
